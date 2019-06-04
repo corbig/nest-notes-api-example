@@ -9,13 +9,14 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const options = new DocumentBuilder()
-    .setTitle('Note example')
+    .setTitle('Nest Note API')
     .setDescription('Note Rest API with user management')
     .setVersion('1.0')
     .addTag('notes')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('', app, document);
+  SwaggerModule.setup('/swagger', app, document);
 
   await app.listen(3000);
 }

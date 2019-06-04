@@ -9,7 +9,10 @@ import { NotesService } from './notes.service';
 import { Note } from './entities/note.entity';
 import { NoteDto } from './dtos/Note.dto';
 import { User } from '../users/entities/user.entity';
+import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiUseTags('notes')
 @Controller('api/notes')
 export class NotesController {
 

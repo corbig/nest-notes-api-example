@@ -33,7 +33,15 @@
 ```bash
 $ npm install
 ```
+## Init Postgre database 
 
+```bash
+# Launching docker container
+$ docker-compose -f docker/postgres.yml up -d
+
+# Using Initialisation script (before this, you must run the app to create tables)
+$ psql -H localhost -P 5432 -U postgres -d noteDB -f docker/postgres_init.sql
+```
 ## Running the app
 
 ```bash
@@ -46,7 +54,6 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
 ## Test
 
 ```bash
@@ -58,6 +65,13 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## Documentation
+
+```bash
+# Compodoc
+$ npx compodoc -p tsconfig.json -s
 ```
 
 ## Support

@@ -4,10 +4,13 @@ import { Role } from './entities/role.entity';
 import { RolesGuard } from '../../auth/guards/roles.guard';
 import { Roles } from '../../auth/decorators/role.decorator';
 import { RoleCode } from './entities/role.enum';
+import { ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
 
 /**
  * Roles REST api
  */
+@ApiBearerAuth()
+@ApiUseTags('roles')
 @Controller('api/roles')
 export class RolesController {
     constructor(private readonly roleService: RolesService) { }

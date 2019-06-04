@@ -41,6 +41,7 @@ export class UsersService {
     async create(user: User): Promise<User> {
         user.id = null;
         user.password = this.encryptPassword(user.password);
+        user.isActive = false;
         try {
             const userRole = await this.roleService.findByRoleCode(RoleCode.USER);
             user.roles = [userRole];
