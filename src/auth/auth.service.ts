@@ -1,11 +1,11 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { IJwtPayload } from './interfaces/IJWTPayload';
 import { UsersService } from '../api/users/users.service';
 import { User } from '../api/users/entities/user.entity';
 import { Role } from '../api/roles/entities/role.entity';
 import { ConfigurationService } from '../configuration/configuration.service';
 import { UserRegistrationDto } from 'src/api/users/dtos/userRegistration.dto';
+import { UserLoginDto } from 'src/api/users/dtos/userLogin.dto';
 
 @Injectable()
 export class AuthService {
@@ -14,18 +14,18 @@ export class AuthService {
         private readonly userService: UsersService,
         private readonly confService: ConfigurationService) { }
 
-    public async validate(payload: IJwtPayload): Promise<User> {
-        const user: User = await this.userService.findByEmail(payload.email);
-        if (!user) {
-            throw new HttpException('user not found', HttpStatus.NOT_FOUND);
+    public async validate(userLoginDto: UserLoginDto): Promise<User> {
+        try {
+            return await this.userService.findByEmail(userLoginDto.email);
+        } catch (error) {
+            Logger.error(error);
+            return null;
         }
-        return user;
     }
 
-    public async login(payload: IJwtPayload): Promise<any | { status: number }> {
-        const userData = await this.validate(payload);
-        const roles = userData.roles.map((userRole: Role) => userRole.code);
-        const userPayload = { email: userData.email, isActive: userData.isActive, roles };
+    public async login(user: User): Promise<any | { status: number }> {
+        const roles = user.roles.map((userRole: Role) => userRole.code);
+        const userPayload = { email: user.email, isActive: user.isActive, roles };
         const accessToken = this.jwtService.sign(userPayload);
 
         return {
