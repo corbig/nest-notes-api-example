@@ -21,7 +21,7 @@ jest.mock('@nestjs/common', () => ({
 const user: User = {
   id: 1,
   email: 'user@user.com',
-  isActive: true,
+  isActive: false,
   password: 'user',
   roles: [],
 };

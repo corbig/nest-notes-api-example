@@ -3,6 +3,10 @@ import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as Joi from 'joi';
 
+/**
+ * Service to manage environments variables
+ * ConfigurationService is available for the whole application
+ */
 @Global()
 @Injectable()
 export class ConfigurationService {

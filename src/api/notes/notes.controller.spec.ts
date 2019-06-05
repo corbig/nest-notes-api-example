@@ -6,16 +6,17 @@ import { Repository } from 'typeorm';
 import { NotesService } from './notes.service';
 import { HttpStatus, HttpException } from '@nestjs/common';
 import { NoteDto } from './dtos/Note.dto';
-import { not } from 'joi';
+
+declare var global;
 
 const constantDate = new Date('2019-06-01T05:41:20');
-// tslint:disable-next-line:max-classes-per-file
-Date = class extends Date {
-  constructor() {
-    super();
-    return constantDate;
-  }
-} as any;
+
+// tslint:disable-next-line:variable-name
+const _Date = Date;
+global.Date = jest.fn(() => constantDate);
+global.Date.UTC = _Date.UTC;
+global.Date.parse = _Date.parse;
+global.Date.now = _Date.now;
 
 const notes: Note[] = [
   {

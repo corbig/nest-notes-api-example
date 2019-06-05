@@ -26,7 +26,18 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A notes taking API example powered with [Nest](https://github.com/nestjs/nest).
+
+This example provides :
+
+* A basic Rest API
+* Unit-testing
+* Authentication with role guards
+* Form validation
+* Postgres DB integration
+* Environments configuration
+* Swagger and Compodoc integration
+* CORS and headers securities (with helmet)
 
 ## Installation
 
@@ -39,7 +50,7 @@ $ npm install
 # Launching docker container
 $ docker-compose -f docker/postgres.yml up -d
 
-# Using Initialisation script (before this, you must run the app to create tables)
+# Using Initialisation script (before this, you must run the app once to create tables)
 $ psql -H localhost -P 5432 -U postgres -d noteDB -f docker/postgres_init.sql
 ```
 ## Running the app
@@ -54,6 +65,10 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## Swagger
+
+The app provides a Swagger client to try the REST API Note at `http://localhost:3000/swagger`
+
 ## Test
 
 ```bash

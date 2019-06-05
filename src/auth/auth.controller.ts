@@ -2,8 +2,8 @@ import { Controller, Post, Body, HttpException, HttpStatus, UseInterceptors, Cla
 import { AuthService } from './auth.service';
 import { User } from '../api/users/entities/user.entity';
 import { Public } from './decorators/public.decorator';
-import { UserRegistrationDto } from 'src/api/users/dtos/userRegistration.dto';
-import { UserLoginDto } from 'src/api/users/dtos/userLogin.dto';
+import { UserRegistrationDto } from '../api/users/dtos/userRegistration.dto';
+import { UserLoginDto } from '../api/users/dtos/userLogin.dto';
 import { ApiUseTags } from '@nestjs/swagger';
 
 @ApiUseTags('authentification')
