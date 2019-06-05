@@ -67,7 +67,7 @@ $ npm run start:prod
 ```
 ## Swagger
 
-The app provides a Swagger client to try the REST API Note at `http://localhost:3000/swagger`
+The app provides a Swagger client to try the note REST API at `http://localhost:3000/swagger`
 
 ## Test
 
