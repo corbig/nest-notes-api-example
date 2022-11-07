@@ -1,0 +1,12 @@
+name: POC Repo Dispatch
+on:
+  repository_dispatch:
+    types: [tf-dev-apply]
+
+jobs:
+  display_github_info:
+    name: Display Github Info
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo github obj
+        run: echo ${{ toJson(github) }}
