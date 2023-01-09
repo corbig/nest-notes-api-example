@@ -22,7 +22,7 @@
   "dependencies": {
     "@nestjs/common": "6.3.0",
     "@nestjs/core": "6.3.0",
-    "@nestjs/jwt": "6.1.1",
+    "@nestjs/jwt": "10.0.1",
     "@nestjs/passport": "6.1.0",
     "@nestjs/platform-express": "6.2.4",
     "@nestjs/swagger": "3.0.2",
@@ -34,7 +34,7 @@
     "helmet": "^3.18.0",
     "joi": "14.3.1",
     "passport": "0.4.0",
-    "passport-jwt": "4.0.0",
+    "passport-jwt": "4.0.1",
     "pg": "7.11.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "2.6.3",
